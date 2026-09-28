@@ -1,0 +1,19 @@
+services:
+  AirbnbDB:
+    image: postgres:18
+    restart: "no"
+    env_file:
+      - .env
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql
+
+  adminer:
+    image: adminer
+    restart: "no"
+    ports:
+      - "8080:8080"
+
+volumes:
+  postgres_data:
