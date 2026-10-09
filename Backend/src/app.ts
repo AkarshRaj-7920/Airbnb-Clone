@@ -1,21 +1,23 @@
 // Enviormental Configuration
-const dotenv = require('dotenv');
+import dotenv from 'dotenv'
 dotenv.config();
 
 // Import Modules
 import type { Application, NextFunction, Request, Response } from 'express';
-const express = require('express');
-const cors = require('cors');
-const cookieParser = require('cookie-parser');
-
+import express from 'express';
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
+import { connectToDb } from './database/database.js'
 
 const app: Application = express();
+await connectToDb()
+
 // CORS Configuration
 app.use(cors());
-app.use(cookieParser())
+app.use(cookieParser());
 // Parser
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.get('/', (req: Request, res: Response, next: NextFunction) => {
@@ -24,4 +26,4 @@ app.get('/', (req: Request, res: Response, next: NextFunction) => {
 })
 
 // Export App
-module.exports = app;
+export default app

@@ -7,14 +7,12 @@
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
-    "module": "preserve",
+    "module": "nodenext",
     "target": "esnext",
     // "types": [],
     // For nodejs:
-    // "lib": ["esnext"],
-    "types": [
-      "node"
-    ],
+    "lib": ["esnext"],
+    "types": ["node"],
     // and npm install -D @types/node
 
     // Other Outputs
@@ -42,13 +40,8 @@
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
     "skipLibCheck": true,
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
   },
-  "exclude": [
-  "node_modules",
-  "dist",
-  "prisma",
-  "prisma.config.ts"
-]
+
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "dist"]
 }
